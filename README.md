@@ -13,6 +13,7 @@ The assignment is divided into 4 blocks.
 Block 1, 2, and 3 all define different classes.
 
 Put the three classes in three separate files in the `src` folder, with the names specified in the PDF.
+**Leave the __init__.py file untouched**.
 
 Below this line, you can write your report to motivate your design choices.
 
