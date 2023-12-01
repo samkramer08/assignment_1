@@ -5,9 +5,10 @@ Please follow the instructions given in the [PDF](https://brightspace.rug.nl/con
 
 ## How to carry out your assignment
 
-Fork this repo on your private github account.
-You can do so by clicking this button on the top-right panel:
-![](fork.png) 
+1. Clone this template into a private repository copying both the main and the submission branches.
+2. Please add your partner and `oop-otoz` to the collaborators.
+3. Create your code in the `main` branch.
+4. Once you are done with the assignment (or earlier), create a pull request from the `main` branch to your `submission` branch and add `oop-otoz` to the reviewers.
 
 The assignment is divided into 4 blocks.
 Block 1, 2, and 3 all define different classes.
