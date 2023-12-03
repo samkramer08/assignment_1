@@ -5,10 +5,11 @@ Please follow the instructions given in the [PDF](https://brightspace.rug.nl/con
 
 ## How to carry out your assignment
 
-1. Clone this template into a private repository copying both the main and the submission branches.
+1. Clone this template into a private repository.
 2. Please add your partner and `oop-otoz` to the collaborators.
-3. Create your code in the `main` branch.
-4. Once you are done with the assignment (or earlier), create a pull request from the `main` branch to your `submission` branch and add `oop-otoz` to the reviewers.
+3. Create a new branch called `submission`.
+4. Create your code in the `main` branch.
+5. Once you are done with the assignment (or earlier), create a pull request from the `main` branch to your `submission` branch and add `oop-otoz` to the reviewers.
 
 The assignment is divided into 4 blocks.
 Block 1, 2, and 3 all define different classes.
