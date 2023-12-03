@@ -8,6 +8,7 @@ on:
 jobs:
   check-reproducibility:
     runs-on: ubuntu-latest
+    permissions: write-all
 
     steps:
       - name: Checkout repository
@@ -40,7 +41,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run setup script
-        run: pip3 install .
+        run: pip3 install -r src/requirements.txt
 
       - name: Run main.py
         id: run_main
