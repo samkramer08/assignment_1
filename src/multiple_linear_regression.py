@@ -14,7 +14,6 @@ class MultipleLinearRegression:
         self._intercept = Ymean - np.sum(Xmean * self._slopes)
 
     def predict(self, X):
-        # Add a column of ones to X for the intercept term
         X_matrix_with_ones = np.column_stack((np.ones(X.shape[0]), X))
         predictions = X_matrix_with_ones @ np.insert(self._slopes, 0, self._intercept)
         return predictions
