@@ -6,7 +6,7 @@ if __name__ == "__main__":
   
   diabetes_X, diabetes_y = datasets.load_diabetes(return_X_y=True)
 
-   model = MultipleLinearRegression(diabeter_X, diabeter_Y)
+   model = MultipleLinearRegression()
 
   
 
