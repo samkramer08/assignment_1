@@ -3,15 +3,12 @@ import matplotlib.pyplot as plt
 
 class RegressionPlotter:
     def __init__(self, data):
+        self.data = None
+
+    def set_data(self, data):
         self.data = data
 
-    def plotter(self, target, features=None, model=None):
-        if features is None:
-            features = list(self.data.columns)
-            features.remove(target)  # Remove the target column
-        num_features = len(features)
-
-    if num_features == 1:
+    def one_feature_plot(self, data, feature, target):
         x = self.data[features[0]]
         y = model.predict(x)
 
@@ -22,7 +19,7 @@ class RegressionPlotter:
         plt.legend()
         plt.show()
 
-     elif num_features == 2:
+     def two_feautres_plot(self, data, feature_one, feature_two, target):
         fig = plt.figure()
         ax = fig.add_subplot(111, projection='3d')
 
@@ -38,7 +35,10 @@ class RegressionPlotter:
         ax.legend()
         plt.show()
 
-    else:
+    def multiple_features_plot(self, data, target):
+        features = list(self.data.columns)
+        features.remove(target)
+        num_features = len(features)
         fig, axes = plt.subplots(num_features, 1, figsize=(8, 4 * num_features), sharey=True)
 
         for i, feature in enumerate(features):
