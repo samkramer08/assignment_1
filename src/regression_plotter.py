@@ -6,12 +6,10 @@ class RegressionPlotter:
         self.data = data
 
     def plotter(self, target, features=None, model=None):
-    if features is None:
-        features = list(self.data.columns)
-        features.remove(target)  # Remove the target column
-
-    num_features = len(features)
-
+        if features is None:
+            features = list(self.data.columns)
+            features.remove(target)  # Remove the target column
+        num_features = len(features)
 
     if num_features == 1:
         x = self.data[features[0]]
