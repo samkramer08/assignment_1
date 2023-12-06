@@ -1,30 +1,33 @@
 import pickle
-import json
+import csv
 
 class ModelSaver:
-    def __init__(self, format_type='pickle'): # default format (pickle)
+    def __init__(self, model=None, format_type='pickle'):
+        self.__model = model
         self.format_type = format_type
 
-    def save(self, model, filename): # dont know what the filename is supposed to be 
+    def save_params(self, model, filename): # saves parameters of a model to a file
         if self.format_type == 'pickle':
             with open(filename, 'wb') as file:
                 pickle.dump(model.get_params(), file)
-        elif self.format_type == 'json':
-            with open(filename, 'w') as file:
-                json.dump(model.get_params(), file)
+        elif self.format_type == 'csv':
+            with open(filename, 'w', newline='') as file:
+                writer = csv.writer(file)
+                writer.writerows(model.get_params().items())
         else:
-            pass
+            raise ValueError(f"{self.format_type} not supported") # value error to account for other format types
 
-    def load(self, model, filename):
+    def load_params(self, model, filename): # loads parameters from a file
         if self.format_type == 'pickle':
             with open(filename, 'rb') as file:
                 parameters = pickle.load(file)
-        elif self.format_type == 'json':
+        elif self.format_type == 'csv':
             with open(filename, 'r') as file:
-                parameters = json.load(file)
+                reader = csv.reader(file)
+                parameters = dict(reader)
         else:
-            pass
+            raise ValueError(f"{self.format_type} not supported") # value error to account for other format types
 
-
+        model.set_params(parameters) # set parameters from file into model
 
 
