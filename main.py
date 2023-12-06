@@ -1,32 +1,32 @@
-from src.multiple_linear_regression import MultipleLinearRegression
-from src.model_saver import ModelSaver
+from multiple_linear_regressions import MultipleLinearRegression
+from model_saver import ModelSaver
 from sklearn.datasets import load_diabetes
-from src.regressrion_plotter import regressrion_plotter
+from sklearn.model_selection import train_test_split
+from reg_plotter import RegressionPlotter
+from sklearn.metrics import mean_squared_error
 
 if __name__ == "__main__":
-	model = MultipleLinearRegression()
-	ms = model_saver(format_type='csv')
-	ms.save_params(model, 'diabetet_dataset.csv')
-	ms.load_params(model, 'diabetes_dataset.csv')
+    model = MultipleLinearRegression()
+    ms = ModelSaver(format_type='csv')
+    ms.save_params(model, 'diabetes_dataset.csv')
+    ms.load_params(model, 'diabetes_dataset.csv')
 
-	data = sklearn.datasets.load_diabetes(return_X_y=True)
-	x, y = data
+    data = load_diabetes(return_X_y=True)
+    x, y = data
 
-	#split data into training and testing data
-	x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
+    # split data into training and testing data
+    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
 
-	# train model
-	model.fit(x_train, y_train)
+    # train model
+    model.train(x_train, y_train)
 
-	#make prediction
-	y_pred = model.predict(x_test)
+    # make prediction
+    y_pred = model.predict(x_test)
 
-	# mean squared error to compare predictions to grownd truth
-	meanSqError = mean_squared_error(y_test, y_pred)
+    # mean squared error to compare predictions to ground truth
+    meanSqError = mean_squared_error(y_test, y_pred)
 
-  # using regression plotter to visualyze results
-	plotter = RegressionPlotter()
-	plotter.set_data({'feature': x_test[:, 0], 'target': y_test}) 
-	plotter.plot(model, features=['feature'])
+    plotter = RegressionPlotter(data={'feature': x_test[:, 0], 'target': y_test})  # Using the first feature for simplicity
+    plotter.plotter(target='target', features=['feature'])
 
-
+    
