@@ -1,6 +1,6 @@
 from src.multiple_linear_regression import MultipleLinearRegression
 from src.model_saver import ModelSaver
-from regression_plotter import Regression Plotter
+from regression_plotter import RegressionPlotter
 import numpy as np
 from sklearn import datasets
 
