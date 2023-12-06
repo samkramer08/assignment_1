@@ -6,7 +6,7 @@ class ModelSaver:
         self.__model = model
         self.format_type = format_type
 
-    def save_params(self, model, filename):
+    def save_params(self, filename):
         # open file in pickle format writer binary, get model params and write them on a file
         if self.format_type == 'pickle':
             with open(filename, 'wb') as file:
@@ -21,7 +21,7 @@ class ModelSaver:
         else:
             raise ValueError(f"{self.format_type} not supported")
 
-    def load_params(self, model, filename):
+    def load_params(self, filename):
         if self.format_type == 'pickle':
             # Open  file in pickle binary read
             with open(filename, 'rb') as file:
