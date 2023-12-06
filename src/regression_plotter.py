@@ -54,14 +54,6 @@ class RegressionPlotter:
             plt.show()
 
 if __name__ == "__main__":
+# dont knwo what do do here :)
 
-    # Define model and features
-    model = RegressionPlotter
-    features = features...
 
-    # Initialize and set data for the plotter
-    plotter = RegressionPlotter(data=your_data)
-    plotter.set_data(your_data)
-
-    # Call the plotter method with target and features
-    plotter.plotter(target='your_target', features=features)
