@@ -10,12 +10,12 @@ class ModelSaver:
         # open file in pickle format writer binary, get model params and write them on a file
         if self.format_type == 'pickle':
             with open(filename, 'wb') as file:
-                pickle.dump(model.get_params(), file) 
+                pickle.dump(self.__model.get_params(), file) 
         # open file in csv format writer, convert to list get params, write a single row in the csv file
         elif self.format_type == 'csv':
             with open(filename, 'w', newline='') as file:
                 csv_w = csv.writer(file)
-                params_w = list(model.get_params().items())
+                params_w = list(self.__model.get_params().items())
                 csv_w.writerow(params_w) 
 
         else:
@@ -40,4 +40,4 @@ class ModelSaver:
             raise ValueError(f"{self.format_type} not supported")
 
         # set the parameters of the model to the saved and loaded parameters
-        model.set_params(params_r)
+        self.__model.set_params(params_r)
