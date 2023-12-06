@@ -6,28 +6,38 @@ class ModelSaver:
         self.__model = model
         self.format_type = format_type
 
-    def save_params(self, model, filename): # saves parameters of a model to a file
+    def save_params(self, model, filename):
+        # open file in pickle format writer binary, get model params and write them on a file
         if self.format_type == 'pickle':
             with open(filename, 'wb') as file:
-                pickle.dump(model.get_params(), file)
+                pickle.dump(model.get_params(), file) 
+        # open file in csv format writer, convert to list get params, write a single row in the csv file
         elif self.format_type == 'csv':
             with open(filename, 'w', newline='') as file:
-                writer = csv.writer(file)
-                writer.writerows(model.get_params().items())
-        else:
-            raise ValueError(f"{self.format_type} not supported") # value error to account for other format types
+                csv_w = csv.writer(file)
+                params_w = list(model.get_params().items())
+                csv_w.writerow(params_w) 
 
-    def load_params(self, model, filename): # loads parameters from a file
+        else:
+            raise ValueError(f"{self.format_type} not supported")
+
+    def load_params(self, model, filename):
         if self.format_type == 'pickle':
+            # Open  file in pickle binary read
             with open(filename, 'rb') as file:
-                parameters = pickle.load(file)
+                # Load the object from  file
+                params_r = pickle.load(file)
         elif self.format_type == 'csv':
+            # open file in csv read
             with open(filename, 'r') as file:
-                reader = csv.reader(file)
-                parameters = dict(reader)
+                # make reader
+                csv_r = csv.reader(file)
+                # store each row as a list in a list
+                params_rows = [row for row in csv_r]
+                # If you want each row as a NumPy array
+                params_r = [np.array(row, dtype=float) for row in params_rows]
         else:
-            raise ValueError(f"{self.format_type} not supported") # value error to account for other format types
+            raise ValueError(f"{self.format_type} not supported")
 
-        model.set_params(parameters) # set parameters from file into model
-
-
+        # set the parameters of the model to the saved and loaded parameters
+        model.set_params(params_r)
